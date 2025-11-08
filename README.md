@@ -10,9 +10,11 @@ Similar add-on for Picotron: https://github.com/ahai64/picotron-definitions
 
 2. Download the repo from Github
 
-3. Put the folder `.vscode/` and `library/` into your VSCode workspace.
+3. Put the `library/` folder next to your .p8 file. 
 
-4. Create a cartridge and include external Lua code with:
+4. If you're using VSCode, put the `.vscode` folder in your workspace. Otherwise, put the `.luarc.json` file next to your .p8 file.
+
+5. Create a cartridge and include external Lua code with:
 
 ```
 #include foo.lua
