@@ -1,8 +1,5 @@
 ---@meta
 
----@class table: { [unknown]: any }
----@class table<K, V>: { [K]: V }
-
 ---Add value VAL to the end of table TBL.
 ---
 ---If index is given then the element is inserted at that position

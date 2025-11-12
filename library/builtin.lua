@@ -1,0 +1,15 @@
+---@meta
+
+---@class unknown
+---@class any
+---@class nil
+---@class boolean
+---@class true: boolean
+---@class false: boolean
+---@class number
+---@class integer: number
+---@class thread
+---@class table: { [unknown]: any }
+---@class table<K, V>: { [K]: V }
+---@class string
+---@class function
