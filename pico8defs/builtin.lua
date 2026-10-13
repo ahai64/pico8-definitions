@@ -1,5 +1,22 @@
 ---@meta
 
+-- Type
+
+---@class unknown
+---@class any
+---@class nil
+---@class boolean
+---@class true: boolean
+---@class false: boolean
+---@class number
+---@class integer: number
+---@class bitfield: integer
+---@class thread
+---@class table: { [unknown]: any }
+---@class table<K, V>: { [K]: V }
+---@class string
+---@class function
+
 -- Main Loop
 
 ---Called once at startup, just before the main loop.

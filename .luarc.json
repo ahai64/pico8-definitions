@@ -1,12 +1,14 @@
 {
-	"Lua.runtime.version": "LuaJIT",
-	"Lua.workspace.checkThirdParty": false,
-	"Lua.diagnostics.disable": [
+    "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+	"runtime.version": "LuaJIT",
+    "workspace.library": [ "./pico8defs/" ],
+    "hint.enable": true,
+    "format.enable": true,
+	"diagnostics.disable": [
 		"lowercase-global",
-		"undefined-doc-name",
 		"err-esc"
 	],
-	"Lua.runtime.nonstandardSymbol": [
+	"runtime.nonstandardSymbol": [
 		"!=",
 		"+=",
 		"-=",
@@ -20,7 +22,7 @@
 		">>=",
 		"//"
 	],
-	"Lua.runtime.builtin": {
+	"runtime.builtin": {
 		"basic": "disable",
 		"bit": "disable",
 		"bit32": "disable",

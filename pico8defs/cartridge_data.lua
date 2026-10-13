@@ -4,6 +4,7 @@
 ---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#CARTDATA)
 ---@param id string
+---@return boolean # true if data was loaded, otherwise false.
 function cartdata(id) end
 
 ---Get the number stored at INDEX (0..63)

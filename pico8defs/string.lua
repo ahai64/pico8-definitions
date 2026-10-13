@@ -16,7 +16,7 @@ function tostr(val, format_flags) end
 ---@return number
 function tonum(val, format_flags) end
 
----Converts one or more values to a string.
+---Convert one or more ordinal character codes to a string.
 ---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#CHR)
 ---@param val0 any
@@ -30,15 +30,18 @@ function chr(val0, ...) end
 ---@param str string
 ---@param index number?
 ---@param num_results number?
----@return number[]
+---@return number|nil ...
 function ord(str, index, num_results) end
 
 ---Grab a substring from string str, from pos0 up to and including pos1.
 ---
+---When POS1 is not specified, the remainder of the string is returned.
+---When POS1 is specified but not a number, a single character at POS0 is returned.
+---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#SUB)
 ---@param str string
 ---@param pos0 number
----@param pos1 number?
+---@param pos1 any?
 ---@return string
 function sub(str, pos0, pos1) end
 
@@ -46,7 +49,7 @@ function sub(str, pos0, pos1) end
 ---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#SPLIT)
 ---@param str string
----@param separator string?
+---@param separator string|number?
 ---@param convert_numbers boolean?
 ---@return table
 function split(str, separator, convert_numbers) end

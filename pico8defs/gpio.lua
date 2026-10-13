@@ -1,0 +1,27 @@
+---@meta
+
+---For more precise timing, the SERIAL() command can be used. GPIO writes are buffered and dispatched at the end of each frame, allowing faster and/or more regular speeds than manually bit-banging using POKE() calls.
+---
+---CHANNEL:
+---  0x000..0x0fe  corresponds to gpio pin numbers; send 0x00 for LOW or 0xFF for HIGH
+---  0x0ff         delay; LENGTH is taken to mean "duration" in microseconds (excl. overhead)
+---  0x400..0x401  ws281x LED string (experimental)
+---  0x800         dropped file  // stat(120) returns TRUE when data is available
+---  0x802         dropped image // stat(121) returns TRUE when data is available
+---  0x804         stdin
+---  0x805         stdout
+---  0x806         file specified with: pico8 -i filename
+---  0x807         file specified with: pico8 -o filename
+---
+---ADDRESS: The PICO-8 memory location to read from / write to.
+---
+---LENGTH: Number of bytes to send. 1/8ths are allowed to send partial bit strings.
+---
+---Returns the number of bytes processed (1/8ths included for partial bytes).
+---
+---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#SERIAL)
+---@param channel number
+---@param address number
+---@param length number? may be omitted in some call forms (e.g. SERIAL(CLK, 0x4300))
+---@return number
+function serial(channel, address, length) end

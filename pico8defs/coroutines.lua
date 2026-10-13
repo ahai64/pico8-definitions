@@ -19,11 +19,13 @@ function cocreate(f) end
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#CORESUME)
 ---@param c thread
 ---@param ... any
----@return boolean,string?
+---@return boolean
+---@return string?
 function coresume(c, ...) end
 
 ---Return the status of coroutine C as a string
 ---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#COSTATUS)
 ---@param c thread
+---@return string
 function costatus(c) end

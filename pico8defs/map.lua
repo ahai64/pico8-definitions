@@ -43,3 +43,9 @@ function map(tile_x, tile_y, sx, sy, tile_w, tile_h, layers) end
 ---@param mdy number?
 ---@param layers number?
 function tline(x0, y0, x1, y1, mx, my, mdx, mdy, layers) end
+
+---Set TLINE coordinate precision.
+---
+---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#Setting_TLINE_Precision)
+---@param precision number
+function tline(precision) end

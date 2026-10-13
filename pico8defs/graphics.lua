@@ -6,21 +6,31 @@
 ---
 ---When CLIP_PREVIOUS is true, clip the new clipping region by the old one.
 ---
+---Returns the previous clipping rectangle as 4 values (x, y, w, h).
+---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#CLIP)
 ---@param x number
 ---@param y number
 ---@param w number
 ---@param h number
 ---@param clip_previous boolean?
+---@return number x
+---@return number y
+---@return number w
+---@return number h
 function clip(x, y, w, h, clip_previous) end
 
 ---Sets the clipping rectangle in pixels. All drawing operations will be clipped to the rectangle at x, y with a width and height of w,h.
 ---
 ---CLIP() to reset.
 ---
----When CLIP_PREVIOUS is true, clip the new clipping region by the old one.
+---Returns the previous clipping rectangle as 4 values (x, y, w, h).
 ---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#CLIP)
+---@return number x
+---@return number y
+---@return number w
+---@return number h
 function clip() end
 
 ---Sets the pixel at x, y to colour index COL (0..15).
@@ -57,22 +67,29 @@ function sset(x, y, col) end
 ---@return number
 function sget(x, y) end
 
----Set the value (VAL) of sprite N's flag F.
+---Set the value of sprite n's flag f.
 ---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#FSET)
 ---@param n number
----@param f number?
+---@param f number
 ---@param val boolean
 function fset(n, f, val) end
+
+---Set the value of sprite n's flag.
+---
+---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#FSET)
+---@param n number
+---@param val bitfield
+function fset(n, val) end
 
 ---Get the value (VAL) of all of sprite N's flags as a single bitfield.
 ---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#FGET)
 ---@param n number
----@return number
+---@return bitfield
 function fget(n) end
 
----Get the value (VAL) of sprite N's flag F.
+---Get the value of sprite N's flag F.
 ---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#FGET)
 ---@param n number
@@ -86,6 +103,7 @@ function fget(n, f) end
 ---@param str any
 ---@param col number?
 ---@return number
+---@return number
 function print(str, col) end
 
 ---Print a string STR and optionally set the draw colour to COL.
@@ -96,24 +114,32 @@ function print(str, col) end
 ---@param y number
 ---@param col number?
 ---@return number
+---@return number
 function print(str, x, y, col) end
 
 ---Set the cursor position.
 ---
 ---If COL is specified, also set the current colour.
 ---
+---Returns the previous cursor position as (x, y).
+---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#CURSOR)
 ---@param x number
 ---@param y number
 ---@param col number?
+---@return number x
+---@return number y
 function cursor(x, y, col) end
 
 ---Set the current colour to be used by drawing functions.
 ---
 ---If COL is not specified, the current colour is set to 6
 ---
+---Returns the previous colour.
+---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#COLOR)
 ---@param col number?
+---@return number
 function color(col) end
 
 ---Clear the screen and reset the clipping rectangle.
@@ -128,9 +154,13 @@ function cls(col) end
 ---
 ---CAMERA() to reset
 ---
+---Returns the previous camera position as (x, y).
+---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#CAMERA)
 ---@param x number?
 ---@param y number?
+---@return number x
+---@return number y
 function camera(x, y) end
 
 ---Draw a circle at x,y with radius r
@@ -212,10 +242,10 @@ function rectfill(x0, y0, x1, y1, col) end
 ---Radius (R) defaults to 0, and is the size of the quarter-circle to be drawn at each corner. The radius used is clamped to fall the range 0 .. min(width,height)/2.
 ---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#RRECT)
----@param x numebr
+---@param x number
 ---@param y number
 ---@param w number
----@param h numebr
+---@param h number
 ---@param r number
 ---@param col number?
 function rrect(x, y, w, h, r, col) end
@@ -229,10 +259,10 @@ function rrect(x, y, w, h, r, col) end
 ---When bits 0x1800.0000 are set in COL, and (PEEK(0x5F34) & 2) == 2, RRECTFILL is drawn inverted.
 ---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#RRECTFILL)
----@param x numebr
+---@param x number
 ---@param y number
 ---@param w number
----@param h numebr
+---@param h number
 ---@param r number
 ---@param col number?
 function rrectfill(x, y, w, h, r, col) end
@@ -246,7 +276,15 @@ function rrectfill(x, y, w, h, r, col) end
 ---@param c0 number
 ---@param c1 number
 ---@param p number?
+---@return number
 function pal(c0, c1, p) end
+
+---assign colours for each entry
+---
+---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#PAL)
+---@param tbl table
+---@param p number?
+function pal(tbl, p) end
 
 ---PAL() with no arguments resets all palettes to system defaults (including transparency values)
 ---
@@ -259,19 +297,25 @@ function pal() end
 ---@param p number
 function pal(p) end
 
----assign colours for each entry
----
----[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#PAL)
----@param tbl table
----@param p number?
-function pal(tbl, p) end
-
 ---Set transparency for colour index to T (boolean) Transparency is observed by SPR(), SSPR(), MAP() AND TLINE()
+---
+---When C is the only parameter, it is treated as a bitfield used to set all 16 values.
+---
+---Return the previous transparency of the colour.
 ---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#PALT)
 ---@param c number
 ---@param t boolean?
+---@return boolean
 function palt(c, t) end
+
+---PALT() resets to default: all colours opaque except colour 0
+---
+---Return the previous transparency state(bitfield).
+---
+---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#PALT)
+---@return bitfield
+function palt() end
 
 ---Draw sprite N (0..255) at position X,Y
 ---
@@ -300,14 +344,17 @@ function spr(n, x, y, w, h, flip_x, flip_y) end
 ---@param dy number
 ---@param dw number? defaults to sw
 ---@param dh number? defaults to sh
----@param flip_x any? flip horizontally when true
----@param flip_y any? flip vertically when true
+---@param flip_x boolean? flip horizontally when true
+---@param flip_y boolean? flip vertically when true
 function sspr(sx, sy, sw, sh, dx, dy, dw, dh, flip_x, flip_y) end
 
 ---The PICO-8 fill pattern is a 4x4 2-colour tiled pattern observed by:
 ---
 ---CIRC() CIRCFILL() RECT() RECTFILL() OVAL() OVALFILL() PSET() LINE()
 ---
+---Returns the previous fill pattern.
+---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#FILLP)
----@param p number P is a bitfield in reading order starting from the highest bit.
+---@param p bitfield P is a bitfield in reading order starting from the highest bit.
+---@return number
 function fillp(p) end

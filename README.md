@@ -1,25 +1,50 @@
-# ahai64/pico8
+# PICO-8 Definitions for Lua Language Server
 
-This is a project consisting of definition files for the sumneko/lua extension for VSCode, allowing you to write PICO-8 programs with the support of modern editor features.
-
-Similar add-on for Picotron: https://github.com/ahai64/picotron-definitions
+LuaCATS definition files that teach the [Lua Language Server](https://luals.github.io/) everything about the **PICO-8** API — so you get completions, hover documentation, accurate signatures and type checking while writing PICO-8 cartridges in an external editor.
 
 ## Usage
 
-1. Install and enable [sumneko/Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) extensions in VSCode Marketplace
+1. Clone this repository and put the files into your project.
 
-2. Download the repo from Github
-
-3. Put the `library/` folder next to your .p8 file. 
-
-4. If you're using VSCode, put the `.vscode` folder in your workspace. Otherwise, put the `.luarc.json` file next to your .p8 file.
-
-5. Create a cartridge and include external Lua code with:
-
-```
-#include foo.lua
+```bash
+git clone https://github.com/ahai64/pico8-definitions.git
 ```
 
-Then you can write code in the workspace of VSCode and enjoy code prompts, formatting, AI copilot, etc.
+(or use "Download ZIP" from GitHub)
 
-![eg](https://www.lexaloffle.com/media/74106/eg.png)
+Your project should end up looking like this:
+
+```
+my-project/
+├── .luarc.json
+├── pico8defs/ 
+├── game.p8
+└── main.lua
+```
+
+2. Get LuaLS:
+    - VS Code: Install the **Lua** extension ([sumneko.lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)) from the VS Code Marketplace.
+    - Neovim: Install [`lua-language-server`](https://github.com/LuaLS/lua-language-server/releases) and ensure it is available on your `PATH`. Configure Neovim to use it as a Lua LSP.
+3. Copy **`.luarc.json`** and **`pico8defs/`** into your project root.
+4. Open any Lua file in the project — `lua_ls` reads `.luarc.json` from the project root automatically (the file also helps LSP root detection).
+
+### Including external code in a cartridge
+
+PICO-8 includes external Lua files with:
+
+```
+#include main.lua
+```
+
+## Related projects
+
+- Definitions for Picotron: [ahai64/picotron-definitions](https://github.com/ahai64/picotron-definitions)
+
+## Reference sources
+
+- [PICO-8 manual](https://www.lexaloffle.com/dl/docs/pico-8_manual.html)
+- [PICO-8 changelog](https://www.lexaloffle.com/dl/docs/pico-8_changelog.txt)
+
+## License
+
+[MIT](LICENSE)

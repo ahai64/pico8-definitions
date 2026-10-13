@@ -2,7 +2,7 @@
 
 ---Read a byte from an address in base ram.
 ---
----If N is specified, PEEK returns that number of results (max: 8192).
+---If N is specified, PEEK returns that number of results (max: 32767).
 ---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#PEEK)
 ---@param addr number
@@ -72,21 +72,39 @@ function memcpy(dest_addr, src_addr, len) end
 ---
 ---Sections can be overlapping.
 ---
+---Returns the number of bytes read.
+---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#RELOAD)
 ---@param dest_addr number
 ---@param src_addr number
 ---@param len number
 ---@param filename string?
+---@return number
 function reload(dest_addr, src_addr, len, filename) end
 
+---RELOAD() is equivalent to RELOAD(0, 0, 0x4300)
+---
+---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#RELOAD)
+---@return number
+function reload() end
+
 ---Copy LEN bytes from source in base ram to dest in cart ram.
+---
+---Returns the number of bytes written.
 ---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#CSTORE)
 ---@param dest_addr number
 ---@param src_addr number
 ---@param len number
 ---@param filename string?
+---@return number
 function cstore(dest_addr, src_addr, len, filename) end
+
+---CSTORE() is equivalent to CSTORE(0, 0, 0x4300)
+---
+---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#CSTORE)
+---@return number
+function cstore() end
 
 ---Write the 8-bit value VAL into memory starting at DEST_ADDR, for LEN bytes.
 ---

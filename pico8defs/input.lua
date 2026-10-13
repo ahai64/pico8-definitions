@@ -1,0 +1,49 @@
+---@meta
+
+---Get button B state for player PL (default 0)
+---
+---If no parameters supplied, returns a bitfield of all 12 button states for player 0 & 1
+---(P0: bits 0..5, P1: bits 8..13)
+---
+---PL is the player index 0..7.
+---
+---Instead of a number for B, a button glyph can be used (in the code editor: SHIFT-L R U D O X).
+---
+---Button list:
+--- 0 left
+--- 1 right
+--- 2 up
+--- 3 down
+--- 4 O
+--- 5 X
+---
+---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#BTN)
+---@param b number? button index 0..5; omit for the all-buttons bitfield
+---@param pl number? player index 0..7
+---@return number|boolean
+function btn(b, pl) end
+
+---Returns true when a button is down AND it was not down the last frame.
+---
+---It also repeats after 15 frames, returning true every 4 frames after that (at 30fps -- double that at 60fps)
+---
+---If no parameters supplied, returns a bitfield of all 12 button states for player 0 & 1.
+---
+---Custom delays (in frames @30fps) can be set by poking:
+---  POKE(0x5F5C, delay) -- initial delay before repeating (255 means never repeat)
+---  POKE(0x5F5D, delay) -- repeating delay
+---(0 means default behaviour: 15 and 4; delays are tracked per-button)
+---
+---Button list:
+--- 0 left
+--- 1 right
+--- 2 up
+--- 3 down
+--- 4 O
+--- 5 X
+---
+---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#BTNP)
+---@param b number? button index 0..5; omit for the all-buttons bitfield
+---@param pl number? player index 0..7
+---@return number|boolean
+function btnp(b, pl) end

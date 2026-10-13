@@ -4,10 +4,13 @@
 ---
 ---If index is given then the element is inserted at that position
 ---
+---Returns the added value VAL.
+---
 ---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#ADD)
 ---@param tbl table
 ---@param val any
 ---@param index number?
+---@return any
 function add(tbl, val, index) end
 
 ---Delete the first instance of value VAL in table TBL. The remaining entries are shifted left one index to avoid holes.
@@ -28,7 +31,7 @@ function deli(tbl, index) end
 
 ---Returns the length of table t (same as #TBL) When VAL is given, returns the number of instances of VAL in that table.
 ---
---- [View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#LEN)
+---[View Online](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#COUNT)
 ---@param tbl table
 ---@param val any?
 ---@return number
@@ -71,8 +74,8 @@ function ipairs(tbl) end
 ---A stateless iterator of key-value pairs for all elements in a table.
 ---@param tbl table the table
 ---@param key any? the current key
----@return key any
----@return value any
+---@return any key
+---@return any value
 function next(tbl, key) end
 
 ---Selects from the given parameters.
